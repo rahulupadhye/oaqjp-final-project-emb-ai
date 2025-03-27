@@ -1,12 +1,14 @@
 '''
 Emotion Detection Server configuration module
 '''
+
 # imports
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
 # Define the Emotion Detector application
 app = Flask("Emotion Detector")
+
 
 # Route for emotion detector service
 @app.route("/emotionDetector")
@@ -30,6 +32,7 @@ def emotion_detetion_action():
 def render_index_page():
     """Index page handler"""
     return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
