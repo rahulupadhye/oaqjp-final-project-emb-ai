@@ -16,11 +16,14 @@ def emotion_detetion_action():
 
     response = emotion_detector(text_to_analyze)
     emotions = ''.join([f"'{key}': {value}, " for key, value in response.items()])
-    text = f'''
-        For the given statement, the system response
-        is {emotions}. The dominant emotion 
-        is <b>{response['dominant_emotion']}</b>.
-    '''
+    if response['dominant_emotion'] is None:
+        text = 'Invalid text! Please try again!.'
+    else:
+        text = f'''
+            For the given statement, the system response
+            is {emotions}. The dominant emotion 
+            is <b>{response['dominant_emotion']}</b>.
+        '''
     return text
 
 @app.route("/")
